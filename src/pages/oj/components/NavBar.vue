@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" class="oj-menu">
-      <div class="logo"><span><a href="/"><img src="/static/image/logo.png" alt="Luyện lập trình hàng ngày với CODETRAIN" height="60px"/></a></span></div>
+      <div class="logo"><span><a href="/" alt="Trang chủ"><img src="/static/image/logo.png" alt="Luyện lập trình hàng ngày với CODETRAIN" height="60px"/></a></span></div>
       <Menu-item name="/problem">
         <Icon type="ios-keypad"></Icon>
         {{$t('m.NavProblems')}}
