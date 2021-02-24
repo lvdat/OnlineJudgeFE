@@ -42,7 +42,7 @@ Vue.config.productionTip = false
 Vue.use(iView, {
   i18n: (key, value) => i18n.t(key, value)
 })
-Vue.use(VueParticlesBg);
+Vue.use(VueParticlesBg)
 Vue.use(VueClipboard)
 Vue.use(highlight)
 Vue.use(katex)
