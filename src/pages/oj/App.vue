@@ -1,5 +1,22 @@
 <template>
   <div>
+    <vue-particles
+        color="#000"
+        :particleOpacity="0.7"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="3"
+        linesColor="#000"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.9"
+        :linesDistance="150"
+        :moveSpeed="3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+    ></vue-particles>
     <NavBar></NavBar>
     <div class="content-app">
       <transition name="fadeInUp" mode="out-in">
@@ -15,7 +32,9 @@
     <BackTop></BackTop>
   </div>
 </template>
-
+<style scoped>
+  #particles-js { position: absolute; background-size: cover; top: 0; bottom: 0; left: 0; right: 0; overflow-y: hidden; z-index: 0; }
+</style>
 <script>
   import { mapActions, mapState } from 'vuex'
   import NavBar from '@oj/components/NavBar.vue'

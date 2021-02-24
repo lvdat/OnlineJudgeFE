@@ -19,6 +19,7 @@ import '@/styles/index.less'
 import highlight from '@/plugins/highlight'
 import katex from '@/plugins/katex'
 import filters from '@/utils/filters.js'
+import VueParticles from 'vue-particles'
 
 import ECharts from 'vue-echarts/components/ECharts.vue'
 import 'echarts/lib/chart/bar'
@@ -44,6 +45,7 @@ Vue.use(iView, {
 Vue.use(VueClipboard)
 Vue.use(highlight)
 Vue.use(katex)
+Vue.use(VueParticles)
 Vue.use(VueAnalytics, {
   id: GOOGLE_ANALYTICS_ID,
   router

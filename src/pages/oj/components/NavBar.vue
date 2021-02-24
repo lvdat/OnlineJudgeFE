@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" class="oj-menu">
-      <div class="logo"><span>{{website.website_name}}</span></div>
+      <div class="logo"><span><a href="/"><img src="https://levandat.co/wp-content/uploads/2021/02/logo1.png" height="60px"/></a></span></div>
       <Menu-item name="/">
         <Icon type="home"></Icon>
         {{$t('m.Home')}}
@@ -133,7 +133,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: auto;
+    height: 60px;
     width: 100%;
     z-index: 1000;
     background-color: #fff;
