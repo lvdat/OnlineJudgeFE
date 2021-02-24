@@ -1,6 +1,5 @@
 <template>
   <div>
-    <particles-bg type="cobweb" :config="config" :bg="true"/>
     <NavBar></NavBar>
     <div class="content-app">
       <transition name="fadeInUp" mode="out-in">
@@ -28,21 +27,7 @@
     },
     data () {
       return {
-        version: process.env.VERSION,
-        config: {
-        num: [4, 7],
-        rps: 0.1,
-        radius: [5, 40],
-        life: [1.5, 3],
-        v: [2, 3],
-        tha: [-30, 30],
-        body: icon,
-        alpha: [0.6, 0],
-        scale: [0.1, 0.4],
-        position: "all",
-        cross: "dead",
-        random: 15
-      }
+        version: process.env.VERSION
       }
     },
     created () {
