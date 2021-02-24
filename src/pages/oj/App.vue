@@ -1,21 +1,21 @@
 <template>
   <div>
     <vue-particles
-        color="#000"
+        color="#1b1680"
         :particleOpacity="0.7"
         :particlesNumber="80"
-        shapeType="circle"
+        shapeType="star"
         :particleSize="3"
-        linesColor="#000"
+        linesColor="#1b1680"
         :linesWidth="1"
         :lineLinked="true"
         :lineOpacity="0.9"
-        :linesDistance="150"
-        :moveSpeed="4"
+        :linesDistance="220"
+        :moveSpeed="6"
         :hoverEffect="true"
         hoverMode="grab"
         :clickEffect="true"
-        clickMode="push"
+        clickMode="repulse"
     ></vue-particles>
     <NavBar></NavBar>
     <div class="content-app">

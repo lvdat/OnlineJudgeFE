@@ -21,7 +21,7 @@ export const m = {
   Submit: 'Submit',
   Submitting: 'Đang submit',
   Judging: 'Judging',
-  Wrong_Answer: 'Đáp án sai',
+  Wrong_Answer: 'Wrong Answer',
   Statistic: 'Thống kê',
   Close: 'Đóng',
   View_Contest: 'Xem cuộc thi đấu',
@@ -161,7 +161,7 @@ export const m = {
   Settings: 'Cài đặt tài khoản',
   Management: 'Admin panel',
   Logout: 'Đăng xuất',
-  Welcome_to: 'Chào mừng đến với',
+  Welcome_to: 'Chào mừng bạn',
   // announcements.vue
   Refresh: 'Làm mới',
   Back: 'Trở lại',
@@ -202,7 +202,7 @@ export const m = {
   Pick_One: 'Chọn ngẫu nhiên một bài',
   Difficulty: 'Độ khó',
   Total: 'Lượt nộp',
-  AC_Rate: 'AC rate',
+  AC_Rate: 'Tỉ lệ đúng',
   // Register.vue
   RegisterUsername: 'Tên tài khoản',
   Email_Address: 'Email',
