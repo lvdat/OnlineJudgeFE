@@ -154,7 +154,7 @@ export const m = {
   About: 'Thông tin',
   Judger: 'Về trình chấm',
   FAQ: 'FAQ',
-  Login: 'Đng nhập',
+  Login: 'Đăng nhập',
   Register: 'Đăng ký',
   MyHome: 'Trang cá nhân',
   MySubmissions: 'Bài đã gửi',
