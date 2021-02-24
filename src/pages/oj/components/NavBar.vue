@@ -2,10 +2,6 @@
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" class="oj-menu">
       <div class="logo"><span><a href="/"><img src="/static/image/logo.png" alt="Luyện lập trình hàng ngày với CODETRAIN" height="60px"/></a></span></div>
-      <Menu-item name="/">
-        <Icon type="home"></Icon>
-        {{$t('m.Home')}}
-      </Menu-item>
       <Menu-item name="/problem">
         <Icon type="ios-keypad"></Icon>
         {{$t('m.NavProblems')}}
