@@ -208,7 +208,7 @@ export const m = {
   Email_Address: 'Email',
   RegisterPassword: 'Mật khẩu',
   Password_Again: 'Nhập lại mật khẩu',
-  Captcha: 'Mã bải vệ',
+  Captcha: 'Mã bảo vệ',
   UserRegister: 'Đăng ký',
   Already_Registed: 'Đã có tài khoản? Đăng nhập ngay!',
   The_username_already_exists: 'Tên tài khoản đã tồn tại.',

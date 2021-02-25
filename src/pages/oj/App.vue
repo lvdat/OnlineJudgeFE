@@ -33,7 +33,7 @@
   </div>
 </template>
 <style scoped>
-  #particles-js { position: absolute; background-attachment: fixed; background-repeat: no-repeat; background-size: cover; top: 0; bottom: 0; left: 0; right: 0; overflow-y: hidden; z-index: 0; }
+  #particles-js { position: fixed; background-attachment: fixed; background-repeat: no-repeat; background-size: 100% 100%; top: 0; bottom: 0; left: 0; right: 0; overflow-y: hidden; z-index: 0; }
 </style>
 <script>
   import { mapActions, mapState } from 'vuex'
