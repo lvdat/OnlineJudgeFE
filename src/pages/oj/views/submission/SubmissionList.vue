@@ -39,11 +39,11 @@
     </div>
     <div v-if="!contestID" id="right-column">
       <Panel shadow style="padding-top: 0px;padding-bottom: 10px;min-height: 400px;">
-        <div slot="title" style="margin-left: -10px;margin-bottom: -10px;">Top giải bài</div>
+        <div slot="title" style="margin-left: -10px;margin-bottom: -10px;">Top 20 PRO</div>
         <ol style="margin-left: 40px;margin-bottom: 20px;">
           <li v-for="u in dataRank" :key="u.id" style="margin-top:4px;">
-            <a :style="'font-weight: 600;color:green'" :href="'/user-home?username=' + u.user.username"
-               :title=" u.title + ' ' + u.user.username">
+            <a :style="'font-weight: 600;color: ' + u.color" :href="'/user-home?username=' + u.user.username"
+               :title="u.title + ' ' + u.user.username">
             {{u.user.username}}
             </a> đã giải {{u.accepted_number}} bài
           </li>
@@ -56,7 +56,7 @@
 <script>
   import { mapGetters } from 'vuex'
   import api from '@oj/api'
-  import { JUDGE_STATUS, USER_TYPE } from '@/utils/constants'
+  import { JUDGE_STATUS, USER_TYPE, RULE_TYPE } from '@/utils/constants'
   import utils from '@/utils/utils'
   import time from '@/utils/time'
   import Pagination from '@/pages/oj/components/Pagination'
@@ -68,6 +68,8 @@
     },
     data () {
       return {
+        dataRank: [],
+        rankLimit: 20,
         formFilter: {
           myself: false,
           result: '',
@@ -215,6 +217,16 @@
         this.routeName = this.$route.name
         this.getSubmissions()
       },
+      getRankData () {
+        api.getUserRank(0, this.rankLimit, RULE_TYPE.ACM).then(res => {
+          this.dataRank = res.data.data.result
+          for (let i in this.dataRank) {
+            this.dataRank[i]['color'] = '#365899'
+            this.dataRank[i]['title'] = 'User'
+          }
+        }).catch(() => {
+        })
+      },
       buildQuery () {
         return {
           myself: this.formFilter.myself === true ? '1' : '0',
@@ -354,6 +366,11 @@
     #contest-menu {
       flex: none;
       width: 210px;
+    }
+    #right-column {
+      flex: none;
+      width: 300px;
+      max-width: 300px;
     }
   }
 </style>

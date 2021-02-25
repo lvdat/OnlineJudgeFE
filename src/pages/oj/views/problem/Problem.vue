@@ -55,7 +55,7 @@
         </div>
       </Panel>
       <!--problem main end-->
-      <Card :padding="20" id="submit-code" dis-hover>
+      <Card :padding="20" id="submit-code" ref="submit-code" dis-hover>
         <CodeMirror :value.sync="code"
                     :languages="problem.languages"
                     :language="language"
@@ -106,11 +106,20 @@
         </Row>
       </Card>
       <Card :padding="20" dis-hover>
-        <h3 style="font-size: 20px;">Bình luận</h3>
+        <h3 style="font-size: 20px;">Thảo luận về Problem</h3>
         <ul style="margin-left: 30px;margin-top: 20px;">
           <li>Vui lòng Không đăng các nội dung quảng cáo, spam!</li>
         </ul>
-        <script type="application/javascript" src="https://utteranc.es/client.js" repo="lvdat/codetrain" issue-term="pathname" theme="github-light" crossorigin="anonymous" async> </script>
+        <vue-tabs>
+            <v-tab title="Github">
+              <script type="application/javascript" src="https://utteranc.es/client.js" repo="lvdat/codetrain" issue-term="pathname" theme="github-light" crossorigin="anonymous" async> </script>
+            </v-tab>
+            <v-tab title="Facebook">
+              <div id="fb-root"></div>
+              <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=247399839651239&autoLogAppEvents=1" nonce="xwAxfd2I"></script>
+              <div class="fb-comments" :data-href="'https://codetrain.co/problem/'+ problem._id" data-width="100%" data-numposts="10"></div>
+            </v-tab>
+        </vue-tabs>
       </Card>
     </div>
 
@@ -127,7 +136,10 @@
             {{$t('m.Announcements')}}
           </VerticalMenu-item>
         </template>
-
+        <VerticalMenu-item v-if="!this.contestID || OIContestRealTimePermission" onclick="let e = document.getElementById('submit-code');window.scrollTo(0, e.offsetTop);">
+            <Icon type="upload"></Icon>
+              {{$t('m.Submit')}}
+        </VerticalMenu-item>
         <VerticalMenu-item v-if="!this.contestID || OIContestRealTimePermission" :route="submissionRoute">
           <Icon type="navicon-round"></Icon>
            {{$t('m.Submissions')}}
@@ -247,6 +259,15 @@
         captchaRequired: false,
         graphVisible: false,
         submissionExists: false,
+        problemList: [],
+        problemLimit: 15,
+        query: {
+          keyword: '',
+          difficulty: '',
+          tag: '',
+          page: 1,
+          orderby: '-create_time'
+        },
         captchaCode: '',
         captchaSrc: '',
         contestID: '',
@@ -328,6 +349,13 @@
           }
         }, () => {
           this.$Loading.error()
+        })
+      },
+      getProblemList () {
+        let offset = 0
+        api.getProblemList(offset, this.problemLimit, this.query).then(res => {
+          this.problemList = res.data.data.results
+          console.log(res.data.data.results)
         })
       },
       changePie (problemData) {
@@ -522,6 +550,11 @@
         language: this.language,
         theme: this.theme
       })
+      storage.set(buildProblemCodeKey('prefer_ide'), {
+        code: '',
+        language: this.language,
+        theme: this.theme
+      })
       next()
     },
     watch: {
@@ -643,6 +676,14 @@
     margin-top: 20px;
     width: 500px;
     height: 480px;
+  }
+  .animation-text {
+    animation: color-change 1s infinite;
+  }
+  @keyframes color-change {
+  0% { color: red; }
+  50% { color: blue; }
+  100% { color: red; }
   }
 </style>
 

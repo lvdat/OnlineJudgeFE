@@ -20,6 +20,8 @@ import highlight from '@/plugins/highlight'
 import katex from '@/plugins/katex'
 import filters from '@/utils/filters.js'
 import VueParticles from 'vue-particles'
+import VueTabs from 'vue-nav-tabs'
+import 'vue-nav-tabs/themes/vue-tabs.css'
 
 import ECharts from 'vue-echarts/components/ECharts.vue'
 import 'echarts/lib/chart/bar'
@@ -46,6 +48,7 @@ Vue.use(VueClipboard)
 Vue.use(highlight)
 Vue.use(katex)
 Vue.use(VueParticles)
+Vue.use(VueTabs)
 Vue.use(VueAnalytics, {
   id: GOOGLE_ANALYTICS_ID,
   router
