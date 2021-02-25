@@ -1,9 +1,15 @@
+<style>
+  .utterances {
+      max-width: 100%;
+      width: 100%;
+  }
+</style>
 <template>
   <div class="flex-container">
     <div id="problem-main">
       <!--problem main-->
       <Panel :padding="40" shadow>
-        <div slot="title">{{problem.title}}</div>
+        <div slot="title">{{problem._id}} - {{problem.title}}</div>
         <div id="problem-content" class="markdown-body" v-katex>
           <p class="title">{{$t('m.Description')}}</p>
           <p class="content" v-html=problem.description></p>
@@ -62,7 +68,7 @@
             <div class="status" v-if="statusVisible">
               <template v-if="!this.contestID || (this.contestID && OIContestRealTimePermission)">
                 <span>{{$t('m.Status')}}</span>
-                <Tag type="dot" :color="submissionStatus.color" @click.native="handleRoute('/status/'+submissionId)">
+                <Tag type="dot" :color="submissionStatus.color" title="Click để xem chi tiết" @click.native="handleRoute('/status/'+submissionId)">
                   {{$t('m.' + submissionStatus.text.replace(/ /g, "_"))}}
                 </Tag>
               </template>
@@ -98,6 +104,13 @@
             </Button>
           </Col>
         </Row>
+      </Card>
+      <Card :padding="20" dis-hover>
+        <h3 style="font-size: 20px;">Bình luận</h3>
+        <ul style="margin-left: 30px;margin-top: 20px;">
+          <li>Vui lòng Không đăng các nội dung quảng cáo, spam!</li>
+        </ul>
+        <script type="application/javascript" src="https://utteranc.es/client.js" repo="lvdat/codetrain" issue-term="pathname" theme="github-light" crossorigin="anonymous" async> </script>
       </Card>
     </div>
 
@@ -185,6 +198,16 @@
         <div class="echarts">
           <ECharts :options="pie"></ECharts>
         </div>
+      </Card>
+      <Card style="margin-top: 20px;" :padding="0" v-if="!this.contestID || OIContestRealTimePermission">
+        <div slot="title" style="font-size: 16px"><i data-v-20c86fbe="" class="ivu-icon ivu-icon-android-document"></i>
+        <span class="card-title">Các bài mới up lên</span>
+        </div>
+        <ul style="margin-left: 40px;margin-bottom: 20px;">
+          <li style="padding: 5px 0px;"  v-for="p in problemList" :key="p.id">
+            <a class="link-style" :href="'/problem/' + p._id">{{p.title}}</a>
+          </li>
+        </ul>
       </Card>
     </div>
 

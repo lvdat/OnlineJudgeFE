@@ -18,8 +18,6 @@
                 </Dropdown-menu>
               </Dropdown>
             </li>
-
-
             <li>
               <i-switch size="large" v-model="formFilter.myself" @on-change="handleQueryChange">
                 <span slot="open">{{$t('m.Mine')}}</span>
@@ -37,6 +35,19 @@
         </div>
         <Table stripe :disabled-hover="true" :columns="columns" :data="submissions" :loading="loadingTable"></Table>
         <Pagination :total="total" :page-size="limit" @on-change="changeRoute" :current.sync="page"></Pagination>
+      </Panel>
+    </div>
+    <div v-if="!contestID" id="right-column">
+      <Panel shadow style="padding-top: 0px;padding-bottom: 10px;min-height: 400px;">
+        <div slot="title" style="margin-left: -10px;margin-bottom: -10px;">Top giải bài</div>
+        <ol style="margin-left: 40px;margin-bottom: 20px;">
+          <li v-for="u in dataRank" :key="u.id" style="margin-top:4px;">
+            <a :style="'font-weight: 600;color:green'" :href="'/user-home?username=' + u.user.username"
+               :title=" u.title + ' ' + u.user.username">
+            {{u.user.username}}
+            </a> đã giải {{u.accepted_number}} bài
+          </li>
+        </ol>
       </Panel>
     </div>
   </div>
