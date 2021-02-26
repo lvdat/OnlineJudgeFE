@@ -37,7 +37,7 @@
     </transition-group>
   </Panel>
   <Row v-if="!isContest" type="flex" :gutter="10" style="margin-top: 70px;">
-    <Col  :span="12">
+    <Col :span="12">
               <Panel shadow style="padding-top: 0px;padding-bottom: 10px;">
                 <div slot="title" style="margin-left: -10px;margin-bottom: -10px;">Bài tập mới up lên</div>
                 <ul style="margin-left: 40px;margin-bottom: 20px;">
@@ -47,7 +47,7 @@
                 </ul>
               </Panel>
             </Col>
-            <Col  :span="12">
+            <Col :span="12">
               <Panel shadow style="padding: 10px;padding-bottom: 10px;">
                 <div slot="title" style="margin-left: -10px;margin-bottom: -10px;">TOP 20 PRO</div>
                 <ol style="margin-left: 40px;margin-bottom: 20px;">
@@ -69,7 +69,7 @@
   import api from '@oj/api'
   import Pagination from '@oj/components/Pagination'
   import { mapState } from 'vuex'
-  import { RULE_TYPE, USER_TYPE } from '@/utils/constants'
+  import { RULE_TYPE, USER_GRADE } from '@/utils/constants'
   export default {
     name: 'Announcement',
     components: {
@@ -113,8 +113,8 @@
         api.getUserRank(0, this.rankLimit, RULE_TYPE.ACM).then(res => {
           this.dataRank = res.data.data.results
           for (let i in this.dataRank) {
-            this.dataRank[i]['color'] = '#365899'
-            this.dataRank[i]['title'] = 'User'
+            this.dataRank[i]['color'] = USER_GRADE[this.dataRank[i].grade].color
+            this.dataRank[i]['title'] = USER_GRADE[this.dataRank[i].grade].name
           }
         }).catch(() => {
         })

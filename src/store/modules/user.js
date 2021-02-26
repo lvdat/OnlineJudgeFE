@@ -2,7 +2,7 @@ import types from '../types'
 import api from '@oj/api'
 import storage from '@/utils/storage'
 import i18n from '@/i18n'
-import { STORAGE_KEY, USER_TYPE, PROBLEM_PERMISSION } from '@/utils/constants'
+import { STORAGE_KEY, USER_TYPE, PROBLEM_PERMISSION, USER_GRADE } from '@/utils/constants'
 
 const state = {
   profile: {}
@@ -11,6 +11,8 @@ const state = {
 const getters = {
   user: state => state.profile.user || {},
   profile: state => state.profile,
+  color: state => USER_GRADE[state.profile.grade].color,
+  gradename: state => USER_GRADE[state.profile.grade].name,
   isAuthenticated: (state, getters) => {
     return !!getters.user.id
   },
