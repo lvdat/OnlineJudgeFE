@@ -56,7 +56,7 @@
 <script>
   import { mapGetters } from 'vuex'
   import api from '@oj/api'
-  import { JUDGE_STATUS, USER_TYPE, RULE_TYPE } from '@/utils/constants'
+  import { RULE_TYPE, JUDGE_STATUS, USER_TYPE } from '@/utils/constants'
   import utils from '@/utils/utils'
   import time from '@/utils/time'
   import Pagination from '@/pages/oj/components/Pagination'
@@ -197,6 +197,7 @@
     },
     mounted () {
       this.init()
+      this.getRankData()
       this.JUDGE_STATUS = Object.assign({}, JUDGE_STATUS)
       // 去除submitting的状态 和 两个
       delete this.JUDGE_STATUS['9']
@@ -222,7 +223,7 @@
           this.dataRank = res.data.data.result
           for (let i in this.dataRank) {
             this.dataRank[i]['color'] = '#365899'
-            this.dataRank[i]['title'] = 'User'
+            this.dataRank[i]['title'] = 'Xem trang cá nhân'
           }
         }).catch(() => {
         })

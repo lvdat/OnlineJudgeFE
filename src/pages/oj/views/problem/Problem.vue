@@ -305,6 +305,9 @@
     },
     beforeRouteEnter (to, from, next) {
       let problemCode = storage.get(buildProblemCodeKey(to.params.problemID, to.params.contestID))
+      if (!problemCode) {
+        problemCode = storage.get(buildProblemCodeKey('prefer_ide'))
+      }
       if (problemCode) {
         next(vm => {
           vm.language = problemCode.language
@@ -318,6 +321,7 @@
     mounted () {
       this.$store.commit(types.CHANGE_CONTEST_ITEM_VISIBLE, {menu: false})
       this.init()
+      this.getProblemList()
     },
     methods: {
       ...mapActions(['changeDomTitle']),
